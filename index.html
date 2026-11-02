@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" concent="Andrew Chamroeun">
+    <title>Guessing Game</title>
+</head>
+<body>
+    <script>
+        // Outer loop allows the player to play more than one game.
+        let playAgain = true;
+
+        while (playAgain) {
+            // Create a random number between 1 and 10, inclusive.
+            let randomNumber = Math.floor(Math.random() * 10) + 1;
+            console.log(randomNumber);
+
+            let guessCount = 1;
+            let guess = Number(prompt("Guess a Number between 1 and 10"));
+
+            // Keep asking until the player guesses the correct number.
+            while (guess !== randomNumber) {
+                if (guess > randomNumber) {
+                    guess = Number(prompt("Your guess was too high, guess again."));
+                } else if (guess < randomNumber) {
+                    guess = Number(prompt("Your guess was too low, guess again."));
+                }
+
+                guessCount++;
+            }
+
+            // Use prompt so the success message matches the required dialog style.
+            prompt("You guessed it in " + guessCount + " guesses!");
+
+            // Bonus: ask whether the player wants another game.
+            let replay = prompt("Would you like to play again? (yes/no)");
+
+            if (replay === null || replay.toLowerCase() !== "yes") {
+                playAgain = false;
+            }
+        }
+    </script>
+</body>
+</html>
